@@ -1,0 +1,54 @@
+@import '../../scss/_mixins';
+@import '../../scss/variables.scss';
+
+.title {
+    @include basic-font-style;
+    font-size: 1em;
+    line-height: 2em;
+    font-weight: 700;
+    text-align: start;
+    color: $prussian_blue;
+}
+
+.button {
+    @include button;
+}
+
+.select {
+    @include select;
+}
+
+.input {
+    @include input;
+}
+
+.home-page {
+    &__options {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+}
+
+.options {
+  &__sorting,
+  &__filters {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 0 1em 0;
+  }
+}
+
+.item {
+  @include item;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  & p {
+    margin: 0 1em 0 0;
+  }
+}

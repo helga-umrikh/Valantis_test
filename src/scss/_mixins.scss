@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import './variables.scss';
+
+@mixin basic-font-style {
+    font-family: 'Roboto';
+    font-style: normal;
+}
+
+@mixin options {
+    font-family: 'Anonymous Pro', monospace;
+    font-style: normal;
+    font-size: 1em;
+    font-weight: 700;
+    border: 0.5em outset $prussian_blue;
+    cursor: pointer;
+}
+
+@mixin button {
+    @include options;
+
+    padding: 0.5em;
+    background-color: $xanthous;
+
+    &:active {
+        box-shadow: inset 8px 10px 10px 1px rgba(0, 0, 0, 0.05);
+        border-style: inset;
+    }
+}
+
+@mixin select {
+    @include options;
+
+    min-width: 330px;
+    padding: 0.5em;
+    background-color: $xanthous;
+
+    &__field {
+        @include options;
+
+        background-color: $vanilla;
+    }
+}
+
+@mixin input {
+    @include options;
+
+    min-width: 330px;
+    padding: 0.5em;
+    background-color: $xanthous;
+
+    &__field {
+        @include options;
+
+        background-color: $vanilla;
+    }
+}
+
+@mixin item {
+    padding: 1em;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 1em;
+    font-weight: 400;
+    border: 0.4em outset $orange;
+    cursor: pointer;
+
+    &:active {
+        box-shadow: inset 8px 10px 10px 1px rgba(0, 0, 0, 0.1);
+        border-style: inset;
+    }
+}
