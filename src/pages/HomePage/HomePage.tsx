@@ -29,7 +29,6 @@ const HomePage = () => {
         items && setcurrentItemsData(items.result)
     }, [data, items])
 
-    console.log(currentItemsData)
 
     return (
         <div className="home-page">

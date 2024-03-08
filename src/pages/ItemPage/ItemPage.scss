@@ -1,0 +1,14 @@
+@import '../../scss/_mixins';
+@import '../../scss/variables.scss';
+
+.message {
+  @include message;
+  margin: 0.5em 0;
+}
+
+.item-page {
+
+  &__details {
+    margin: 0 0 1em 0;
+  }
+}

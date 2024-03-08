@@ -54,6 +54,6 @@
 }
 
 .message {
-  @include message;
-  margin: 0.5em 0;
+    @include message;
+    margin: 0.5em 0;
 }
