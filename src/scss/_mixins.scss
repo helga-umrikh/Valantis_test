@@ -71,3 +71,13 @@
         border-style: inset;
     }
 }
+
+@mixin message {
+    @include basic-font-style;
+    font-size: 1em;
+    line-height: 2em;
+    font-weight: 700;
+    text-align: center;
+    color: $fire_engine;
+    border: 0.5em outset $prussian_blue;
+}

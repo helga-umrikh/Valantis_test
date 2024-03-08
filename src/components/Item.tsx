@@ -1,14 +1,21 @@
-import React from 'react'
+import React, { FC } from 'react'
+import { ItemType } from '../models/IItem'
+import ItemButton from './ItemButton'
 
-const Item = () => {
-  return (
-    <div className='item'>
-      <p>Id</p>
-      <p>Name</p>
-      <p>Brand</p>
-      <p>Price</p>
-    </div>
-  )
+interface ItemProps {
+    item: ItemType
+}
+
+const Item: FC<ItemProps> = ({ item }) => {
+    return (
+        <div className="item">
+            <p>{item.brand}</p>
+            <p>{item.product}</p>
+            <p>{item.price}</p>
+            <p>{item.id}</p>
+            <ItemButton id={item.id}/>
+        </div>
+    )
 }
 
 export default Item

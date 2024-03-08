@@ -3,7 +3,7 @@
 
 .title {
     @include basic-font-style;
-    font-size: 1em;
+    font-size: 1.5em;
     line-height: 2em;
     font-weight: 700;
     text-align: start;
@@ -32,23 +32,28 @@
 }
 
 .options {
-  &__sorting,
-  &__filters {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0 0 1em 0;
-  }
+    &__sorting,
+    &__filters {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 0 1em 0;
+    }
 }
 
 .item {
-  @include item;
+    @include item;
 
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-  & p {
-    margin: 0 1em 0 0;
-  }
+    & p {
+        margin: 0 1em 0 0;
+    }
+}
+
+.message {
+  @include message;
+  margin: 0.5em 0;
 }
