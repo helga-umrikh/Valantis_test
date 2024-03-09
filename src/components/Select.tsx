@@ -1,13 +1,20 @@
-import React from 'react'
+import React from 'react';
+interface SelectProps {
+    onSelectChange: (selectedValue: string) => void; 
+}
 
-const Select = () => {
+const Select: React.FC<SelectProps> = ({ onSelectChange }) => {
+    const handleSelectChange = (event: any) => {
+        const selectedValue = event.target.value;
+        onSelectChange(selectedValue)
+    }
     return (
         <form className="select">
-            <label htmlFor="field">Field:</label>
-            <select name="field" id="field" className="select__field">
-                <option value="volvo">Price</option>
-                <option value="saab">Brand</option>
-                <option value="mercedes">Product</option>
+            <label htmlFor="field">Сортировать по:</label>
+            <select name="field" id="field" className="select__field" onChange={handleSelectChange}>
+                <option value="price">Цена</option>
+                <option value="brand">Бренд</option>
+                <option value="product">Название</option>
             </select>
         </form>
     )

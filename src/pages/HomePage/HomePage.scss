@@ -16,10 +16,18 @@
 
 .select {
     @include select;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .input {
     @include input;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .home-page {

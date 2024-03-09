@@ -10,6 +10,12 @@ import { ItemType } from '../../models/IItem'
 const HomePage = () => {
     const [currentIds, setcurrentIds] = useState<string[]>([])
     const [currentItemsData, setcurrentItemsData] = useState<[]>([])
+    const [selectedField, setSelectedField] = useState('')
+    const [inputPriceValue, setInputPriceValue] = useState<string | number>(0)
+    const [inputBrandValue, setInputBrandValue] = useState<string | number>('')
+    const [inputProductValue, setInputProductValue] = useState<string | number>(
+        ''
+    )
 
     const { data } = itemAPI.useFetchAllItemsIdsQuery({
         offset: 0,
@@ -29,6 +35,9 @@ const HomePage = () => {
         items && setcurrentItemsData(items.result)
     }, [data, items])
 
+    const handleFieldChange = (value: string) => {
+        setSelectedField(value)
+    }
 
     return (
         <div className="home-page">
@@ -36,15 +45,28 @@ const HomePage = () => {
                 <h1 className="title">Valantis Jewelry</h1>
                 <div className="home-page__options">
                     <div className="options__sorting">
-                        <Select />
-                        <Input />
-                        <Input />
+                        <Select onSelectChange={handleFieldChange} />
                         <Button />
                     </div>
                     <div className="options__filters">
-                        <Input />
-                        <Input />
-                        <Input />
+                        <Input
+                            onInputChange={(value) => {
+                                setInputPriceValue(value)
+                            }}
+                            inputName="Цена"
+                        />
+                        <Input
+                            onInputChange={(value) => {
+                                setInputBrandValue(value)
+                            }}
+                            inputName="Бренд"
+                        />
+                        <Input
+                            onInputChange={(value) => {
+                                setInputProductValue(value)
+                            }}
+                            inputName="Название"
+                        />
                         <Button />
                     </div>
                 </div>
@@ -56,9 +78,9 @@ const HomePage = () => {
                         {error && <h1 className="message">Error!</h1>}
                     </div>
                     {currentItemsData &&
-                        currentItemsData.map(
-                            (e: ItemType) => <Item key={e.id} item={e}/>
-                        )}
+                        currentItemsData.map((e: ItemType) => (
+                            <Item key={e.id} item={e} />
+                        ))}
                 </div>
             </div>
         </div>

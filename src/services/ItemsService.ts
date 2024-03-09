@@ -6,13 +6,16 @@ export const itemAPI = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.valantis.store:41000/',
         prepareHeaders: (headers) => {
-            headers.set('X-Auth', 'd3304c2752445278cf9ba34b2dabf05a')
-            headers.set('Content-Type', 'application/json');
+            headers.set('X-Auth', '')
+            headers.set('Content-Type', 'application/json')
             return headers
         },
     }),
     endpoints: (build) => ({
-        fetchAllItemsIds: build.query<IItemsIds, { offset: number; limit: number }>({
+        fetchAllItemsIds: build.query<
+            IItemsIds,
+            { offset: number; limit: number }
+        >({
             query: ({ offset = 0, limit = 49 }) => ({
                 url: '/',
                 method: 'POST',
@@ -32,8 +35,25 @@ export const itemAPI = createApi({
                 }),
             }),
         }),
-        fetchItemsById: build.query<IItemsData, number>({
-            query: (id: number) => `/item/${id}`,
+        fetchAllItemsFields: build.query<IItemsData, { field: string; offset: number; limit: number }
+        >({
+            query: ({ offset = 0, limit = 49 }) => ({
+                url: '/',
+                method: 'POST',
+                body: JSON.stringify({
+                    action: 'get_fields',
+                    params: { offset, limit },
+                }),
+            }),
         }),
+        fetchAllItemsFilter: build.query<IItemsIds, { price: number; brand: string; product: string}>({
+            query: () => ({
+                url: '/',
+                method: 'POST',
+                body: JSON.stringify({
+                    action: 'filter'
+                })
+            })
+        })
     }),
 })
